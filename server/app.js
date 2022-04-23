@@ -43,8 +43,10 @@ app.get('/landing-pad', async (req, res) => {
   axios
     .get(`https://api.spacexdata.com/v4/landpads/${id}`)
     .then((response) => {
+      const { id, full_name, status, locality, region } = response.data;
+
       res.status(response.status);
-      res.send({ data: response.data });
+      res.send({ data: { id, fullName: full_name, status, locality, region } });
     })
     .catch((error) => {
       console.error(error);
