@@ -111,7 +111,6 @@ export const fetchLandingPadsById =
         dispatch(getLandingPadsByIdSuccess({ data: response.data }));
       })
       .catch((error) => {
-        console.log("🚀 ~ file: spaceXRedux.js ~ line 112 ~ error", error.response)
         dispatch(getLandingPadsByIdFail({ errorMsg: error.response.data }));
       });
   };
