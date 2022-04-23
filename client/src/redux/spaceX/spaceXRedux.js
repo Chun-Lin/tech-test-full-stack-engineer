@@ -29,6 +29,7 @@ export const initialState = {
 export const spaceXReducer = createReducer(initialState, {
   [actionTypes.GET_CAPSULES_START]: (state, action) => {
     state.isLoading.capsules = true;
+    state.errorMsg = '';
   },
   [actionTypes.GET_CAPSULES_SUCCESS]: (state, action) => {
     const { data } = action.payload;
@@ -41,6 +42,7 @@ export const spaceXReducer = createReducer(initialState, {
   },
   [actionTypes.GET_LANDING_PADS_BY_ID_START]: (state, action) => {
     state.isLoading.landingPads = true;
+    state.errorMsg = '';
   },
   [actionTypes.GET_LANDING_PADS_BY_ID_SUCCESS]: (state, action) => {
     const { data } = action.payload;
