@@ -25,6 +25,7 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@hot-loader/react-dom": "16.13.0",
+    "@reduxjs/toolkit": "^1.8.1",
     "axios": "0.19.2",
     "customize-cra": "0.9.1",
     "framer-motion": "^4.1.17",
