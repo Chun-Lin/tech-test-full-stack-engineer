@@ -22,13 +22,13 @@ app.get('/all-capsules', async (req, res) => {
   axios
     .get('https://api.spacexdata.com/v4/capsules')
     .then((response) => {
-      console.log(`statusCode: ${response.status}`);
-      console.log(response);
       res.status(response.status);
       res.send({ data: response.data });
     })
     .catch((error) => {
       console.error(error);
+      res.status(404)
+      throw new Error('Something went wrong!')
     });
 });
 
