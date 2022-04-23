@@ -32,5 +32,26 @@ app.get('/all-capsules', async (req, res) => {
     });
 });
 
+app.get('/landing-pad', async (req, res) => {
+  const { id } = req.query;
+  console.log('🚀 ~ file: app.js ~ line 37 ~ app.get ~ id', typeof id);
+
+  if (typeof id !== 'string') {
+    throw new Error('id format is incorrect!');
+  }
+
+  axios
+    .get(`https://api.spacexdata.com/v4/landpads/${id}`)
+    .then((response) => {
+      res.status(response.status);
+      res.send({ data: response.data });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(404);
+      throw new Error('The landing pad id is not found!');
+    });
+});
+
 app.listen('4001');
 console.log(`Listening on port: 4000, wait for the development server to be up...`);
