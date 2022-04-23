@@ -21,9 +21,13 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@hot-loader/react-dom": "16.13.0",
     "axios": "0.19.2",
     "customize-cra": "0.9.1",
+    "framer-motion": "^4.1.17",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-redux": "7.2.0",
