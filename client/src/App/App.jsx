@@ -1,36 +1,18 @@
 import { hot } from 'react-hot-loader/root';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Flex, Stack, Input, Text, FormErrorMessage } from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
+import { Button, Flex } from '@chakra-ui/react';
 import { ReactComponent as Rocket } from '../assets/rocket.svg';
-
 import PrettifyJsonOutput from '../components/PrettifyJsonOutput';
-import { fetchAllCapsules, fetchLandingPadsById } from '../redux/spaceX/spaceXRedux';
+import { fetchAllCapsules } from '../redux/spaceX/spaceXRedux';
+import LandingPadSearch from '../components/LandingPadSearch';
 
 const App = () => {
-  const [inputValue, setInputValue] = useState('');
-
-  const { outputData, isLoading, errorMsg } = useSelector((state) => state.spaceX);
+  const { outputData, isLoading } = useSelector((state) => state.spaceX);
   const dispatch = useDispatch();
-
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting }
-  } = useForm();
-  console.log('🚀 ~ file: App.jsx ~ line 22 ~ App ~ errors', errors);
 
   const capsuleBtnClickHandler = () => {
     dispatch(fetchAllCapsules());
-  };
-
-  const ladingPadBtnClickHandler = (id) => {
-    dispatch(fetchLandingPadsById({ id }));
-  };
-
-  const ladingPadIdFormSubmitHandler = (values) => {
-    dispatch(fetchLandingPadsById({ id: values }));
   };
 
   return (
@@ -58,35 +40,9 @@ const App = () => {
             <Flex flex="1" justify="center" align="center" bgColor="blue">
               <Rocket />
             </Flex>
-            <form onSubmit={handleSubmit(ladingPadIdFormSubmitHandler)}>
-              <Flex flex="1" direction="row" justify="center" align="center" p="2">
-                <Stack spacing={3}>
-                  <Input
-                    id="landingPad"
-                    placeholder="Input Pad ID"
-                    size="lg"
-                    {...register('landingPad', {
-                      maxLength: { value: 15, message: 'Maximum length should be 15' },
-                      pattern: {
-                        value: /[A-Za-z\d]+/g,
-                        message: 'Invalid ID!'
-                      }
-                    })}
-                  />
-                  <Button
-                    colorScheme="teal"
-                    size="lg"
-                    type="submit"
-                    isLoading={isLoading?.landingPads}
-                  >
-                    Landing Pad
-                  </Button>
-                  <Text fontSize="md" color="tomato">
-                    {errors?.landingPad?.message || errorMsg}
-                  </Text>
-                </Stack>
-              </Flex>
-            </form>
+            <Flex flex="1" direction="row" justify="center" align="center" p="2">
+              <LandingPadSearch />
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
