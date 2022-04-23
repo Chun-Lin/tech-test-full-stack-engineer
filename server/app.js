@@ -27,7 +27,7 @@ app.get('/all-capsules', async (req, res) => {
     })
     .catch((error) => {
       console.error(error);
-      res.status(404);
+      res.status(404).send('Something went wrong!');
       throw new Error('Something went wrong!');
     });
 });
@@ -50,9 +50,8 @@ app.get('/landing-pad', async (req, res) => {
     })
     .catch((error) => {
       console.error(error);
-    //   res.status(401).json({ message: 'The landing pad id is not found!' });
       res.status(401).send('The landing pad id is not found!');
-    //   throw new Error('The landing pad id is not found!');
+      throw new Error('The landing pad id is not found!');
     });
 });
 

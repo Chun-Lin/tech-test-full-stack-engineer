@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Rocket } from '../assets/rocket.svg';
-import { Button, Flex, Stack, Input } from '@chakra-ui/react';
+import { Button, Flex, Stack, Input, Text } from '@chakra-ui/react';
 
 import PrettifyJsonOutput from '../components/PrettifyJsonOutput';
 import { fetchAllCapsules, fetchLandingPadsById } from '../redux/spaceX/spaceXRedux';
@@ -10,7 +10,7 @@ import { fetchAllCapsules, fetchLandingPadsById } from '../redux/spaceX/spaceXRe
 const App = () => {
   const [inputValue, setInputValue] = useState('');
 
-  const { outputData, isLoading } = useSelector((state) => state.spaceX);
+  const { outputData, isLoading, errorMsg } = useSelector((state) => state.spaceX);
   const dispatch = useDispatch();
 
   const capsuleBtnClickHandler = () => {
@@ -62,6 +62,9 @@ const App = () => {
                 >
                   Landing Pad
                 </Button>
+                <Text fontSize="md" color="tomato">
+                  {errorMsg}
+                </Text>
               </Stack>
             </Flex>
           </Flex>
