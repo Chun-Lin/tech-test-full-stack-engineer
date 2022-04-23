@@ -18,7 +18,7 @@ const App = () => {
         >
           <Box flex="2">output</Box>
           <Flex flex="1" direction={['column', 'column', 'row']}>
-            <Flex flex="1" justify="center" align="center">
+            <Flex flex="1" justify="center" align="center" p="2">
               <Button colorScheme="teal" size="lg">
                 Capsules
               </Button>
@@ -26,10 +26,11 @@ const App = () => {
             <Flex flex="1" justify="center" align="center" bgColor="blue">
               <Rocket />
             </Flex>
-            <Flex flex="1" direction="row" justify="center" align="center">
+            <Flex flex="1" direction="row" justify="center" align="center" p="2">
               <Stack spacing={3}>
-                <input
+                <Input
                   placeholder="Input Pad ID"
+                  size="lg"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
