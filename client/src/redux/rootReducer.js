@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import capsuleReducer from './capsule/capsuleRedux';
+import spaceXReducer from './spaceX/spaceXRedux';
 
 const rootReducer = combineReducers({
-  capsules: capsuleReducer
+  spaceX: spaceXReducer
 });
 
 export default rootReducer;

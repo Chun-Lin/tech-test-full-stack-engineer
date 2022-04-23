@@ -5,16 +5,20 @@ import { ReactComponent as Rocket } from '../assets/rocket.svg';
 import { Button, Flex, Stack, Input } from '@chakra-ui/react';
 
 import PrettifyJsonOutput from '../components/PrettifyJsonOutput';
-import { fetchAllCapsules } from '../redux/capsule/capsuleRedux';
+import { fetchAllCapsules, fetchLandingPadsById } from '../redux/spaceX/spaceXRedux';
 
 const App = () => {
   const [inputValue, setInputValue] = useState('');
 
-  const { capsulesData, isLoading } = useSelector((state) => state.capsules);
+  const { outputData, isLoading } = useSelector((state) => state.spaceX);
   const dispatch = useDispatch();
 
   const capsuleBtnClickHandler = () => {
     dispatch(fetchAllCapsules());
+  };
+
+  const ladingPadBtnClickHandler = (id) => {
+    dispatch(fetchLandingPadsById({ id }));
   };
 
   return (
@@ -27,14 +31,14 @@ const App = () => {
           p="3"
           border={['none', 'none', '1px solid black']}
         >
-          <PrettifyJsonOutput data={capsulesData?.data} />
+          <PrettifyJsonOutput data={outputData?.data} />
           <Flex flex="1" direction={['column', 'column', 'row']}>
             <Flex flex="1" justify="center" align="center" p="2">
               <Button
                 colorScheme="teal"
                 size="lg"
                 onClick={capsuleBtnClickHandler}
-                isLoading={isLoading}
+                isLoading={isLoading?.capsules}
               >
                 Capsules
               </Button>
@@ -50,7 +54,12 @@ const App = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                 />
-                <Button colorScheme="teal" size="lg">
+                <Button
+                  colorScheme="teal"
+                  size="lg"
+                  onClick={() => ladingPadBtnClickHandler(inputValue)}
+                  isLoading={isLoading?.landingPads}
+                >
                   Landing Pad
                 </Button>
               </Stack>

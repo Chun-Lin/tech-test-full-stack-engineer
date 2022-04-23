@@ -11,11 +11,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get('/', async (req, res) => {
-    const rows = await dbPool.query('SELECT * FROM spaceData');
-    res.status(200);
-    res.send({
-        result: JSON.stringify(rows)
-    });
+  const rows = await dbPool.query('SELECT * FROM spaceData');
+  res.status(200);
+  res.send({
+    result: JSON.stringify(rows),
+  });
 });
 
 app.get('/all-capsules', async (req, res) => {
@@ -27,8 +27,8 @@ app.get('/all-capsules', async (req, res) => {
     })
     .catch((error) => {
       console.error(error);
-      res.status(404)
-      throw new Error('Something went wrong!')
+      res.status(404);
+      throw new Error('Something went wrong!');
     });
 });
 
@@ -50,10 +50,13 @@ app.get('/landing-pad', async (req, res) => {
     })
     .catch((error) => {
       console.error(error);
-      res.status(404);
-      throw new Error('The landing pad id is not found!');
+    //   res.status(401).json({ message: 'The landing pad id is not found!' });
+      res.status(401).send('The landing pad id is not found!');
+    //   throw new Error('The landing pad id is not found!');
     });
 });
 
 app.listen('4001');
-console.log(`Listening on port: 4000, wait for the development server to be up...`);
+console.log(
+  `Listening on port: 4000, wait for the development server to be up...`
+);
