@@ -26,7 +26,7 @@ const LandingPadSearch = () => {
           placeholder="Input Pad ID"
           size="lg"
           borderColor="teal.500"
-          _hover={{ borderColor: "teal.600" }}
+          _hover={{ borderColor: 'teal.600' }}
           isInvalid={errors?.landingPad?.message}
           errorBorderColor="crimson"
           {...register('landingPad', {

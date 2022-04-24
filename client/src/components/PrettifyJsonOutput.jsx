@@ -11,7 +11,7 @@ const StyledPre = styled.pre`
   white-space: break-spaces;
 `;
 
-const PrettifyJsonOutput = ({data}) => {
+const PrettifyJsonOutput = ({ data }) => {
   return <StyledPre>{JSON.stringify(data, null, 2)}</StyledPre>;
 };
 
