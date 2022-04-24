@@ -20,10 +20,13 @@ const App = () => {
       <Flex w="100vw" h="100vh" justify="center" align="center">
         <Flex
           direction={['row', 'row', 'column']}
+          gap="2"
           w={['100%', '100%', '50%']}
           h={['100%', '100%', '50%']}
           p="3"
-          border={['none', 'none', '1px solid black']}
+          borderRadius="md"
+          bgColor="gray.50"
+          border="1px solid skyblue"
         >
           <PrettifyJsonOutput data={outputData?.data} />
           <Flex flex="1" direction={['column', 'column', 'row']}>
@@ -31,13 +34,14 @@ const App = () => {
               <Button
                 colorScheme="teal"
                 size="lg"
+                w="100%"
                 onClick={capsuleBtnClickHandler}
                 isLoading={isLoading?.capsules}
               >
                 Capsules
               </Button>
             </Flex>
-            <Flex flex="1" justify="center" align="center" bgColor="blue">
+            <Flex flex="1" justify="center" align="center" bgColor="teal.500">
               <Rocket />
             </Flex>
             <Flex flex="1" direction="row" justify="center" align="center" p="2">

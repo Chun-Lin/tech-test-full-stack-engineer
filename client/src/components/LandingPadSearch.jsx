@@ -25,6 +25,10 @@ const LandingPadSearch = () => {
           id="landingPad"
           placeholder="Input Pad ID"
           size="lg"
+          colorScheme="purple"
+          border="1px solid blue"
+          isInvalid={errors?.landingPad?.message}
+          errorBorderColor="crimson"
           {...register('landingPad', {
             pattern: {
               value: /[A-Za-z\d]+/g,
