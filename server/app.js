@@ -34,7 +34,6 @@ app.get('/all-capsules', async (req, res) => {
 
 app.get('/landing-pad', async (req, res) => {
   const { id } = req.query;
-  console.log('🚀 ~ file: app.js ~ line 37 ~ app.get ~ id', typeof id);
 
   if (typeof id !== 'string') {
     throw new Error('id format is incorrect!');
@@ -55,7 +54,7 @@ app.get('/landing-pad', async (req, res) => {
     });
 });
 
-app.listen('4001');
+app.listen('4000');
 console.log(
   `Listening on port: 4000, wait for the development server to be up...`
 );

@@ -86,7 +86,7 @@ export const getLandingPadsByIdFail = createAction(actionTypes.GET_LANDING_PADS_
 export const fetchAllCapsules = () => (dispatch) => {
   dispatch(getCapsulesStart());
 
-  const getAllCapsulesUrl = 'http://localhost:4001/all-capsules';
+  const getAllCapsulesUrl = 'http://localhost:4000/all-capsules';
 
   axios
     .get(getAllCapsulesUrl)
@@ -103,7 +103,7 @@ export const fetchLandingPadsById =
   (dispatch) => {
     dispatch(getLandingPadsByIdStart());
 
-    const getLandingPadsByIdUrl = 'http://localhost:4001/landing-pad';
+    const getLandingPadsByIdUrl = 'http://localhost:4000/landing-pad';
 
     axios
       .get(getLandingPadsByIdUrl, { params: { id } })
